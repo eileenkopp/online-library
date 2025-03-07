@@ -22,6 +22,7 @@ from django.contrib.auth import views as auth_views
 from django.contrib.auth import logout
 from django.conf.urls.static import static
 from django.conf import settings
+from lending.views import profile_view, profile_update
 
 def force_google_redirect(request):
     return redirect('https://accounts.google.com/o/oauth2/auth?client_id=1017901213595-g6r3svb5t7uemf100dcs5bn3autpv271.apps.googleusercontent.com&redirect_uri=http://127.0.0.1:8000/auth/complete/google-oauth2/&response_type=code&scope=email')
@@ -38,6 +39,8 @@ urlpatterns = [
     path('auth/', include('social_django.urls', namespace='social')),
     path('force-login/', force_google_redirect, name='force-google-login'),
     path('logout/', auth_views.LogoutView.as_view(next_page='/lending/login/'), name='logout'),
+    path('profile/', profile_view, name='profile'),
+    path('profile/update/', profile_update, name='profile_update')
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
