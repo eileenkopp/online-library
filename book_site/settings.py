@@ -126,6 +126,7 @@ SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '1017901213595-g6r3svb5t7uemf100dcs5bn3autpv271.apps.googleusercontent.com'
 SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = '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'
 
+LOGIN_URL = '/lending/login'
 LOGIN_REDIRECT_URL = '/lending/'
 LOGOUT_REDIRECT_URL = '/'
 SOCIAL_AUTH_GOOGLE_OAUTH2_REDIRECT_URI = 'https://cs3240-b-11-ae930d732989.herokuapp.com/auth/complete/google-oauth2/'
