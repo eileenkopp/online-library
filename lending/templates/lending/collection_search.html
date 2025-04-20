@@ -5,18 +5,28 @@
 {% block content %}
 
 <div class="container">
-    <div class="d-flex justify-content-center position-relative mt-5">
+    <div class="d-flex justify-content-between position-relative mt-5">
+
+        <form class="d-flex ml-0" action="{% url 'lending:collection_search' collection.id %}" method="get">
+            <div class="input-group">
+                <input class="form-control" type="search" name="q" placeholder="Search" value="{{query}}">
+                <button class="btn btn-outline-light" type="submit">Search</button>
+            </div>
+        </form>
+
         <!--Collection Name-->
         <h1 class="fw-bold" style="font-size: clamp(1rem, 5vw, 2.5rem)"> Collection: {{ collection.collection_name }} </h1>
 
         <!--Edit and Delete Buttons-->
         {% if user.is_staff or collection.owner == user %}
-        <div class="position-absolute top-0 end-0">
+        <div class="">
             <a href="{% url 'lending:edit_collection' collection.id %}" class="btn btn-primary me-2">Edit Collection</a>
             <a href="#" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete Collection</a>
         </div>
         {% endif %}
     </div>
+
+
 
     <!--Private/Public Tag-->
     <div class="d-flex justify-content-center mb-4">
@@ -27,12 +37,7 @@
         {% endif %}
     </div>
 
-    <form class="d-flex mx-3" action="{% url 'lending:collection_search' collection.id %}" method="get">
-        <div class="input-group">
-            <input class="form-control" type="search" name="q" placeholder="Search">
-            <button class="btn btn-outline-light" type="submit">Search</button>
-        </div>
-    </form>
+
 
     <!--Book List-->
     <div class="row">
